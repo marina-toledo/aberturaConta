@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Itaú Conta</title>
+    <title>Abertura de Conta</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
      <!--<link href="css/bootstrap-theme.min.css" rel="stylesheet"> -->
@@ -14,14 +14,14 @@
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <!-- <script type="text/javascript" src="js/bootstrap-theme.min.css"></script> -->
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
 <div class="container">
 
     <form id="frmLogin" class="form col-md-12">
         <div class="row">
-            <h2>Conta Itaú</h2>
+            <h2>Abertura de Conta</h2>
         </div>
 
         <div class="row">
@@ -37,15 +37,17 @@
         <div class="row">
             <button id="entrar">Entrar</button>
         </div>
+
         <div class="row">
             <div id="msgErroLogin"></div>
         </div>
 
         <div class="row">
             <div data-toggle="modal" data-target="#recuperarSenha">
-                <a>Esqueceu a senha?</a>
+                <a href="javascript:limparCampos()">Esqueceu a senha?</a>
             </div>
         </div>
+
         <div class="row">
             <a class="col-md-3" href="cadastro.html">Cadastrar</a>
         </div>
@@ -60,15 +62,17 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel">Recuperar senha</h4>
                 </div>
+
                 <div class="modal-body">
                     <div class="row col-md-12">
                         Uma nova senha será enviada ao seu e-mail.
                     </div>
                     <div class="row">
-                        <label for="recuperar" class="col-md-1">E-mail: </label>
-                        <input type="text" id="recuperar" value="">
+                        <label for="email" class="col-md-1">E-mail: </label>
+                        <input type="text" id="email" value="">
                     </div>
                 </div>
+
                 <div class="modal-footer">
                     <div id="msgEnviouSenha" class="text-left"></div>
                     <button id="enviarSenha" type="button" class="btn btn-default" data-dismiss="modal">Enviar senha</button>

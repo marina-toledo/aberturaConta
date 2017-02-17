@@ -27,6 +27,21 @@ public class AppController {
 //        return "index";
 //    }
 
+    @RequestMapping("/enviaSenhaPorEmail")
+    private void enviaSenhaPorEmail(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        OutputStream os = response.getOutputStream();
+        String msg = "parameters: " + request.getParameter("email");
+
+        // TODO:: implementar enviar senha por email
+
+        Boolean status = true;
+        msg = status.toString();
+
+        os.write(msg.getBytes());
+        os.close();
+        os.flush();
+    }
+
     @RequestMapping("/cadastrar")
     public String cadastrar() {
         return "cadastro";
