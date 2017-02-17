@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Itaú Conta</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+     <!--<link href="css/bootstrap-theme.min.css" rel="stylesheet"> -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <!-- <script type="text/javascript" src="js/bootstrap-theme.min.css"></script> -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <form id="frmLogin" class="form col-md-12">
+        <div class="row">
+            <h2>Conta Itaú</h2>
+        </div>
+
+        <div class="row">
+            <label for="usuario" class="col-md-1">Usuário: </label>
+            <input type="text" id="usuario" value="">
+        </div>
+
+        <div class="row">
+            <label for="senha" class="col-md-1">Senha: </label>
+            <input type="text" id="senha" value="">
+        </div>
+
+        <div class="row">
+            <button id="entrar">Entrar</button>
+        </div>
+        <div class="row">
+            <div id="msgErroLogin"></div>
+        </div>
+
+        <div class="row">
+            <div data-toggle="modal" data-target="#recuperarSenha">
+                <a>Esqueceu a senha?</a>
+            </div>
+        </div>
+        <div class="row">
+            <a class="col-md-3" href="cadastro.html">Cadastrar</a>
+        </div>
+    </form>
+
+    <hr>
+
+    <!--Modal para recuperar senha-->
+    <div class="modal fade" id="recuperarSenha" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Recuperar senha</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row col-md-12">
+                        Uma nova senha será enviada ao seu e-mail.
+                    </div>
+                    <div class="row">
+                        <label for="recuperar" class="col-md-1">E-mail: </label>
+                        <input type="text" id="recuperar" value="">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div id="msgEnviouSenha" class="text-left"></div>
+                    <button id="enviarSenha" type="button" class="btn btn-default" data-dismiss="modal">Enviar senha</button>
+                </div>
+            </div>
+        </div>
+    </div>   
+
+</div> <!-- fecha container -->
+</body>
+</html>

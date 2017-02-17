@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Itaú Conta</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- <link href="css/bootstrap-theme.min.css" rel="stylesheet"> -->
+    <link href="css/style.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <!-- <script type="text/javascript" src="js/bootstrap-theme.min.css"></script> -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <form id="frmCadastro" class="form col-md-12">
+        <div class="row">
+            <h2>Cadastro</h2>
+        </div>
+
+        <div class="row">
+            <label for="nomeCompleto" class="col-md-1">Nome completo: </label>
+            <input type="text" id="nomeCompleto" value=""/>
+        </div>
+
+        <div class="row">
+            <label for="cpf" class="col-md-1">CPF: </label>
+            <input type="text" id="cpf" value=""/>
+        </div>
+
+        <div class="row">
+            <label for="rg" class="col-md-1">RG: </label>
+            <input type="text" id="rg" value=""/>
+        </div>
+
+        <div class="row">
+            <label for="email" class="col-md-1">E-mail: </label>
+            <input type="text" id="email" value=""/>
+        </div>
+
+        <div class="row">
+            <label for="telefone" class="col-md-1">Telefone: </label>
+            <input type="text" id="telefone" value=""/>
+        </div>
+
+        <div class="row">
+            <button id="cadastrar">Cadastrar</button>
+        </div>
+        
+    </form>
+
+    <hr/>
+
+    <div id="msgCadastro"></div>
+
+</div> <!-- fecha container -->
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Itaú Conta</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- <link href="css/bootstrap-theme.min.css" rel="stylesheet"> -->
+    <link href="css/style.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <!-- <script type="text/javascript" src="js/bootstrap-theme.min.css"></script> -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h2>Pronto</h2>
+    </div>
+
+    <div class="text-left">
+    <br/>
+    Esperando confirmação de dados para abertura de conta.<br/><br/>
+    Dentro de 3 dias atualizaremos seu status.
+    </div>
+
+    <hr/>
+
+    <div class="row">
+        <button id="visualizar">Visualizar dados</button>
+        <button id="editar">Editar dados</button>
+        <button id="excluir" data-toggle="modal" data-target="#excluirModal">Excluir conta</button>
+    </div>
+
+    <!--Modal para excluir conta-->
+    <div class="modal fade" id="excluirModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Excluir conta</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row col-md-12">
+                        Tem certeza que deseja excluir sua conta?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="naoExcluir" class="pull-left" type="button" data-dismiss="modal">
+                    Não excluir
+                    </button>
+                    <button id="excluirConta" type="button" data-dismiss="modal">
+                    Excluir conta
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>  
+
+</div> <!-- fecha container -->
+</body>
+</html>
