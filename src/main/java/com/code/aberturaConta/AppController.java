@@ -1,5 +1,6 @@
 package com.code.aberturaConta;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.List;
 
 import static javax.servlet.http.HttpServletResponse.SC_OK;
 
@@ -18,6 +20,14 @@ import static javax.servlet.http.HttpServletResponse.SC_OK;
  */
 @Controller
 public class AppController {
+
+    @Autowired
+    UserDAO dao;
+
+    @RequestMapping("/erro") //TODO
+    public String erro(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        return "menuFinal";
+    }
 
 //    ------------------------------
 //    Requests vindo da pagina INDEX
@@ -30,12 +40,20 @@ public class AppController {
     @RequestMapping("/enviaSenhaPorEmail")
     private void enviaSenhaPorEmail(HttpServletRequest request, HttpServletResponse response) throws IOException {
         OutputStream os = response.getOutputStream();
-        String msg = "parameters: " + request.getParameter("email");
+
+        String email = request.getParameter("email");
+        String senha = request.getParameter("senha");
+        String msg = "parameters: " + email;
 
         // TODO:: implementar enviar senha por email
-
-        Boolean status = true;
-        msg = status.toString();
+//        User u = new User(email, senha);
+//        dao.save(u);
+        List<User> emails = dao.findByEmail(request.getParameter("email"));
+        if ( emails!=null && emails.size() > 0){
+            msg = Boolean.TRUE.toString();
+        }else{
+            msg = Boolean.FALSE.toString();
+        }
 
         os.write(msg.getBytes());
         os.close();
@@ -43,8 +61,9 @@ public class AppController {
     }
 
     @RequestMapping("/cadastrar")
-    public String cadastrar() {
-        return "cadastro";
+    public String cadastrar(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //response.sendRedirect("cadastro");
+        return "menuFinal";
     }
 
     @RequestMapping("/entrar")
@@ -66,16 +85,22 @@ public class AppController {
     @RequestMapping("/submitCadastro")
     private void submitCadastro(HttpServletRequest request, HttpServletResponse response) throws IOException {
         OutputStream os = response.getOutputStream();
+
+        String email = request.getParameter("email");
+        String rg = request.getParameter("rg");
+        String cpf = request.getParameter("cpf");
+        String nomeCompleto = request.getParameter("nomeCompleto");
+        String telefone = request.getParameter("telefone");
+
         String msg = "parameters: "
-                + request.getParameter("nomeCompleto")
-                + request.getParameter("cpf")
-                + request.getParameter("rg")
-                + request.getParameter("email")
-                + request.getParameter("telefone");
+                + nomeCompleto + cpf + rg + email + telefone;
 
         String senha = Helper.gerarSenha();
-        Boolean status = Helper.criarUsuario(/* parametros de cadastro aqui*/);
-        msg = status.toString();
+        //Boolean status = Helper.criarUsuario(/* parametros de cadastro aqui*/);
+        User u = new User( email, senha, rg, cpf, nomeCompleto, telefone);
+        dao.save(u);
+        //msg = status.toString();
+        msg = Boolean.TRUE.toString();
 
         os.write(msg.getBytes());
         os.close();

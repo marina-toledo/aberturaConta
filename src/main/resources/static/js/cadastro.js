@@ -30,7 +30,7 @@ $(document).ready(function () {
 
                         .always(function (msg) {
                             function redireciona() {
-                                location.href = "/Itau-JSP";
+                                location.href = "index";
                             }
 
                             setTimeout(redireciona, 3000);
