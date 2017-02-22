@@ -32,10 +32,10 @@ public class AppController {
 //    ------------------------------
 //    Requests vindo da pagina INDEX
 //    ------------------------------
-//    @RequestMapping("/")
-//    public String init() {
-//        return "index";
-//    }
+    @RequestMapping("/")
+    public String init() {
+        return "index";
+    }
 
     @RequestMapping("/enviaSenhaPorEmail")
     private void enviaSenhaPorEmail(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -63,7 +63,7 @@ public class AppController {
     @RequestMapping("/cadastrar")
     public String cadastrar(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //response.sendRedirect("cadastro");
-        return "menuFinal";
+        return "cadastro";
     }
 
     @RequestMapping("/entrar")

@@ -30,7 +30,7 @@ $(document).ready(function () {
 
                         .always(function (msg) {
                             function redireciona() {
-                                location.href = "index";
+                                location.href = "/";
                             }
 
                             setTimeout(redireciona, 3000);
