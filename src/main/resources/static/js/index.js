@@ -27,16 +27,9 @@ $(document).ready(function () {
 //    ------------------------------
 //    Recuperar senha
 //    ------------------------------
-    limparCampos = function () {
+    limparCamposModalSenha = function () {
         $('#msgEnviouSenha').text('');
         $('#email').val('');
-    };
-
-    emailEhValido = function (email) {
-        // TODO : http://stackoverflow.com/questions/46155/validate-email-address-in-javascript
-        var re = /\S+@\S+\.\S+/; //anystring@anystring.anystring
-        return re.test(email);
-        return true;
     };
 
     enviaSenhaPorEmail = function () {
@@ -48,17 +41,16 @@ $(document).ready(function () {
         })
         .done(function (msg) {
             var msgEnviouSenha = $('#msgEnviouSenha');
-
-            if(msg == 'true'){
-                msgEnviouSenha.text("Uma senha temporária foi enviada ao seu e-mail.");
-                msgEnviouSenha.removeClass("msgErro");
-                msgEnviouSenha.addClass("msgSucesso");''
-            }else{
-                msgEnviouSenha.text("Erro ao enviar email. Tente novamente.");
-                msgEnviouSenha.removeClass("msgSucesso");
-                msgEnviouSenha.addClass("msgErro");
-            }
+            msgEnviouSenha.text("Uma senha temporária foi enviada ao seu e-mail.");
+            msgEnviouSenha.removeClass("msgErro");
+            msgEnviouSenha.addClass("msgSucesso");
         })
+        .fail(function() {
+            var msgEnviouSenha = $('#msgEnviouSenha');
+            msgEnviouSenha.text("Erro ao enviar email. Tente novamente.");
+            msgEnviouSenha.removeClass("msgSucesso");
+            msgEnviouSenha.addClass("msgErro");
+          })
         ;
 
         return false;
@@ -79,6 +71,22 @@ $(document).ready(function () {
                 }
                 return false;
             }
+    );
+
+    $("#email").keyup(
+        function() {
+          var msgEnviouSenha = $('#msgEnviouSenha');
+
+          if ( emailEhValido($("#email").val()) ) {
+              msgEnviouSenha.text("Email válido");
+              msgEnviouSenha.removeClass("msgErro");
+              msgEnviouSenha.addClass("msgSucesso");
+          } else {
+              msgEnviouSenha.text("Email inválido");
+              msgEnviouSenha.removeClass("msgSucesso");
+              msgEnviouSenha.addClass("msgErro");
+          }
+        }
     );
 
 });

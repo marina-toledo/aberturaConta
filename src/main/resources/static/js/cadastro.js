@@ -1,8 +1,15 @@
 $(document).ready(function () {
-    // cadastro
+
     $('#frmCadastro').submit(
             function () {
                 var msgCadastro = $('#msgCadastro');
+
+                var email = $('#email');
+                if( $('#email').val().length > 0 && emailEhValido(email) ){
+                    $('#cpf').val("E-mail válido.");
+                }else{
+                    $('#cpf').val("E-mail inválido.");
+                }
 
                 var jqxhr = $.ajax({
                     url: "submitCadastro",

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
+import java.util.logging.Logger;
 
 import static javax.servlet.http.HttpServletResponse.SC_OK;
 
@@ -39,30 +40,22 @@ public class AppController {
 
     @RequestMapping("/enviaSenhaPorEmail")
     private void enviaSenhaPorEmail(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        OutputStream os = response.getOutputStream();
-
-        String email = request.getParameter("email");
-        String senha = request.getParameter("senha");
-        String msg = "parameters: " + email;
-
         // TODO:: implementar enviar senha por email
+//        String senha = request.getParameter("senha");
 //        User u = new User(email, senha);
 //        dao.save(u);
         List<User> emails = dao.findByEmail(request.getParameter("email"));
-        if ( emails!=null && emails.size() > 0){
-            msg = Boolean.TRUE.toString();
-        }else{
-            msg = Boolean.FALSE.toString();
+
+        if ( emails==null || emails.size() == 0){
+            Logger.getAnonymousLogger().info("log Erro X");
+            System.out.println("system Erro X");
+            throw new RuntimeException("X");
         }
 
-        os.write(msg.getBytes());
-        os.close();
-        os.flush();
     }
 
     @RequestMapping("/cadastrar")
     public String cadastrar(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        //response.sendRedirect("cadastro");
         return "cadastro";
     }
 
